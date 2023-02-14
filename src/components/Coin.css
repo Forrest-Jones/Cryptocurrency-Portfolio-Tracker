@@ -1,0 +1,48 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 22px;
+    margin: .4rem;
+    width: 170px;
+    height: 170px;
+    border-radius: 24px;
+    border: 1px solid #d3d3d3;
+    box-shadow: rgb(0 0 0 / 12%) 0px 8px 24px;
+    text-align: center;
+}
+
+.card:hover {
+    box-shadow: rgb(0 0 0 / 20%) 0px 8px 24px;
+    cursor: pointer;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    width: 50px;
+    margin: auto;
+    padding: .2rem 0;
+}
+
+.icon {
+    font-size: 20px;
+    margin: auto;
+    padding-top: 6px;
+    justify-content: center;
+    align-items: center;
+}
+
+.span {
+    font-size: 22px;
+}
+
+.green {
+    color: #00ff00;
+}
+
+.red {
+    color: #ff0000;
+}

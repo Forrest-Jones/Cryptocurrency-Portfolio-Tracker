@@ -1,18 +1,21 @@
-import React from 'react'
-import Featured from './components/Featured'
-import Hero from './components/Hero'
+import React, {useState, useEffect} from 'react'
 import Navbar from './components/Navbar'
-import Signup from './components/Signup'
-import Footer from './components/Footer'
+import CoinContainer from './components/CoinContainer.js'
 
 function App() {
+
+  const [coins, setCoins] = useState(null)
+
+  useEffect(() => {
+    fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=226&page=1&sparkline=false')
+    .then(r => r.json())
+    .then(data => setCoins(data))
+  }, [])
+
   return (
     <>
-      <Navbar />
-      <Hero />
-      <Featured />
-      <Signup />
-      <Footer />
+      <Navbar/>
+      {coins ? <CoinContainer coins={coins}/> : null}
     </>
   );
 }

@@ -10,27 +10,20 @@ const handleClick = () => setClick(!click)
     return (
         <div className='header'>
             <div className='container'>
-                <h1>De<span className='primary'>Fi</span></h1>
+                <h1>Coin <span className='primary'>Watcher</span></h1>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li>
                         <a href='/'>Home</a>
                     </li>
                     <li>
-                        <a href='/'>Featured</a>
+                        <a href='/'>Search</a>
                     </li>
                     <li>
-                        <a href='/'>Earn</a>
-                    </li>
-                    <li>
-                        <a href='/'>Contact</a>
+                        <a href='/'>My Coins</a>
                     </li>
                 </ul>
                 <div className='btn-group'>
-                    <button className='btn'>Connect Wallet</button>
-                </div>
-                <div className='hamburger' onClick={handleClick}>
-                    {click ? (<FaTimes size={20} style={{color: '#333'}}/>) : (<FaBars size={20} style={{color: '#333'}} />)}
-                    
+                    <button className='btn'>Login</button>
                 </div>
             </div>
         </div>
