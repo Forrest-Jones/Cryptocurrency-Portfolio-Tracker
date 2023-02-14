@@ -18,7 +18,7 @@ function Coin({coin}){
             </div>
             <span className={up ? 'green' : 'red'}>
                     {up ? <FiArrowUpRight className='icon'/> : <FiArrowDown className='icon'/>}
-                    {coin.price_change_percentage_24h.toFixed(2)}%
+                    {Math.abs(coin.price_change_percentage_24h.toFixed(2))}%
             </span>
         </div>
     )
