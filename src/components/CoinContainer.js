@@ -5,13 +5,13 @@ import './CoinContainer.css'
 function CoinContainer({coins}) {
     return (
         <ul>
-            {coins.map(coin => {
+            {coins?.map(coin => {
                 return (
-                    <li>
+                    <li key={coin.id}>
                         <Coin coin={coin}/>
                     </li>
                 )
-            })}
+                })}
         </ul>
     )
 }
