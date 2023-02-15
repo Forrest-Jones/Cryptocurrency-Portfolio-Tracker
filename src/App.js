@@ -28,7 +28,7 @@ function App() {
     return(
       <>
       <div className={`App ${theme}`}>
-        <button onClick={toggleTheme}>Mode</button>
+        <button className = 'btn' onClick={toggleTheme}>Mode</button>
       
        <Navbar onChangePage={setPage} />
             <Switch>
