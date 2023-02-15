@@ -2,11 +2,17 @@ import React, {useState} from 'react'
 import {FaBars, FaTimes} from 'react-icons/fa'
 import './Navbar.css'
 import { Link } from "react-router-dom"
-
+import Login from './Login'
 
 const Navbar = () => {
 const [click, setClick] = useState(false)
+const [login, setLogin] = useState(false)
 const handleClick = () => setClick(!click)
+
+function handleLogin(){
+    setLogin(!login)
+}
+
 
     return (
         <div className='header'>
@@ -26,7 +32,8 @@ const handleClick = () => setClick(!click)
                     </nav>
                 </ul>
                 <div className='btn-group'>
-                    <button className='btn'>Login</button>
+                    {!login ? 
+            <button className='btn'onClick={handleLogin}>Login</button> : <Login />}
                 </div>
             </div>
         </div>

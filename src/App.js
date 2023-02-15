@@ -6,10 +6,18 @@ import { Route, Switch } from "react-router-dom";
 import Search from "./components/Search.js"
 import MyCoins from "./components/MyCoins.js"
 import Home from "./components/Home.js"
+import Login from './components/Login.js' 
 
 function App() {
 
   const[page,setPage] = useState("/")
+  const [login, onLogin] = useState();
+
+  function handleLogin(){
+    if(!login){
+      return <Login onLogin={onLogin}/>
+    }
+  }
 
     return(
       <>
