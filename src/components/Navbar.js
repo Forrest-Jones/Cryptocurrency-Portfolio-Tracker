@@ -17,7 +17,7 @@ function handleLogin(){
     return (
         <div className='header'>
             <div className='container'>
-                <h1>Coin <span className='primary'>Watcher</span></h1>
+                <h1><span className='primary'>Coin Watcher</span></h1>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <nav>
                         <li>
