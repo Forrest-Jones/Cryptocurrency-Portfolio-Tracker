@@ -1,55 +1,58 @@
-import React, {useState, useEffect} from 'react';
-import ReactDOM from "react-dom";
+import React, {useState, useEffect} from 'react'
 import Navbar from './components/Navbar'
-import CoinContainer from './components/CoinContainer.js';
-import { Route, Switch } from "react-router-dom";
 import Search from "./components/Search.js"
 import MyCoins from "./components/MyCoins.js"
-import Home from "./components/Home.js"
+import CoinContainer from './components/CoinContainer.js'
+import {Route, Switch} from "react-router-dom"
 import Login from './components/Login.js' 
-import './index.css';
+import './index.css'
 
 function App() {
+  const [coins, setCoins] = useState(null)
+  const [login, onLogin] = useState()
+  const [lightTheme, setLightTheme] = useState(true)
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const[page,setPage] = useState("/")
-  const [login, onLogin] = useState();
-  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+      fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false')
+      .then(r => r.json())
+      .then(data => setCoins(data))
+  }, [])
 
-  function handleDarkModeClick(){
-    setDarkMode((darkMode) =>!darkMode);
-  }
-
-  const theme = darkMode? "dark" : "light";
   function handleLogin(){
     if(!login){
       return <Login onLogin={onLogin}/>
     }
   }
-  
 
+  function toggleTheme() {
+    setLightTheme(!lightTheme)
+  }
 
-    return(
-      <>
-      <div className={theme}>
-        <button onClick={handleDarkModeClick}>{darkMode ? "dark" : "Light"} Mode</button>
-      
-       <Navbar onChangePage={setPage} />
-            <Switch>
-              <Route path="/search">
-                <Search />
-              </Route>
-              <Route path="/myCoins">
-                <MyCoins />
-              </Route>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-                </Route>
-            </Switch>
-        </div>
-      </>
-    )
-    }
-  export default App;
+  function filteredCoins(){
+    return coins.filter(coin =>coin.name.toLowerCase().includes(searchQuery.toLowerCase()))
+  };
+
+  return (
+    <div className={`App ${lightTheme ? 'light' : 'dark'}`}>
+
+      <Navbar theme={lightTheme} setTheme={toggleTheme}/>
+      <Switch>
+        <Route path="/search">
+          <Search query={setSearchQuery}/>
+        </Route>
+        <Route path="/myCoins">
+          <MyCoins />
+        </Route>
+        <Route exact path="/">
+        </Route>
+      </Switch>
+
+      <div className='Coins'>
+        {coins ? <CoinContainer coins={filteredCoins()}/> : null}
+      </div>
+    </div>
+  )
+}
+
+export default App

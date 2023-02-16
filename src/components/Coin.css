@@ -1,42 +1,26 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    padding: 12px 22px;
-    margin: .4rem;
     width: 170px;
-    height: 200px;
-    border-radius: 24px;
-    border: 1px solid #d3d3d3;
+    border: 2px solid #d3d3d3;
+    height: 170px;
     box-shadow: rgb(0 0 0 / 12%) 0px 8px 24px;
-    text-align: center;
 }
 
 .card:hover {
-    box-shadow: rgb(0 0 0 / 20%) 0px 8px 24px;
     cursor: pointer;
-}
-
-.top {
-    display: flex;
-    flex-direction: column;
+    box-shadow: rgb(0 0 0 / 20%) 0px 8px 24px;
 }
 
 img {
     width: 50px;
     margin: auto;
-    padding: .2rem 0;
 }
 
 .icon {
-    font-size: 20px;
     margin: auto;
+    font-size: 20px;
+    align-items: center;
     padding-top: 6px;
     justify-content: center;
-    align-items: center;
-}
-
-.span {
-    font-size: 22px;
 }
 
 .green {
@@ -46,19 +30,13 @@ img {
 .red {
     color: #ff0000;
 }
-.add-button {
-    background-image:url('https://t3.ftcdn.net/jpg/02/69/88/10/360_F_269881000_DRxBaqA00V3v78XP5zCXOQXBFbJZtyJx.jpg');
-    background-size: cover;
-    width: 30px;
-    height: 30px;
-    background-position: center;
-    border-color: none;
-}
-.remove-button {
-    background-image:url('https://static.vecteezy.com/system/resources/thumbnails/004/581/271/small/trash-can-icon-garbage-bin-with-lid-delete-symbol-illustration-free-vector.jpg');
-    background-size: cover;
-    width: 30px;
-    height: 30px;
-    background-position: center;
+
+.add {
+    text-align: center;
+    width: 25px;
+    cursor: cell;
+    height: 25px;
+    padding: 0px;
+    position: absolute;
     border-color: none;
 }
