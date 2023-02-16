@@ -1,5 +1,46 @@
 {
   "Logins": [
-   
+    {
+      "Email": "frankytheclaw@gmail.com",
+      "Username": "frankytheclaw",
+      "Password": "frankytheclaw",
+      "id": 1
+    },
+    {
+      "Email": "frankytheclaw@gmail.com",
+      "Username": "frankytheclaw",
+      "Password": "frankytheclaw",
+      "id": 2
+    },
+    {
+      "Email": "macktheknife@gmail.com",
+      "Username": "macktheknife",
+      "Password": "macktheknife",
+      "id": 3
+    },
+    {
+      "Email": "normanmailoer@gmil.com",
+      "Username": "normanmailer",
+      "Password": "normanmailer",
+      "id": 4
+    },
+    {
+      "Email": "",
+      "Username": "",
+      "Password": "",
+      "id": 5
+    },
+    {
+      "Email": "hankarron@hank.com",
+      "Username": "hankarron",
+      "Password": "hankarron",
+      "id": 6
+    },
+    {
+      "Email": "bladejohson@blade.com",
+      "Username": "blade",
+      "Password": "bladejohnson",
+      "id": 7
+    }
   ]
 }
