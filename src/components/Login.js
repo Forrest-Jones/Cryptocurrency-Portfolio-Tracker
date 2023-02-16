@@ -30,7 +30,17 @@ function Login({ onLogin }) {
     setUsername('');
     setPassword('');
   }
+  fetch('http://localhost:4000/Logins')
+  .then(response => response.json())
+  .then(data => {
+    const emails = data.map(login => login.Email);
+    console.log(emails);
+    // code to store emails in file
+  })
+  .catch(error => console.error(error));
+
   return (
+    
     <div className="login-container">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
@@ -60,17 +70,10 @@ function Login({ onLogin }) {
           ))}
         </ul>
       </div>
+      
     </div>
   );
-
-  fetch('http://localhost:4000/Logins')
-  .then(response => response.json())
-  .then(data => {
-    const emails = data.map(login => login.Email);
-    console.log(emails);
-    // code to store emails in file
-  })
-  .catch(error => console.error(error));
 }
+
 
 export default Login;

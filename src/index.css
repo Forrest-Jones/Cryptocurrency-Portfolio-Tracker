@@ -119,12 +119,12 @@ input {
   }
 }  
 
-.dark {
-  background-color: #333;
+.dark  {
+  background: #333;
   color: #fff;
   transition: all 0.5s;
   }
-.light {
-  background-color: #fff;
+.light  {
+  background: #fff;
   color: #333;
   }
