@@ -122,6 +122,7 @@ input {
 .dark {
   background-color: #333;
   color: #fff;
+  transition: all 0.5s;
   }
 .light {
   background-color: #fff;

@@ -13,30 +13,25 @@ function App() {
 
   const[page,setPage] = useState("/")
   const [login, onLogin] = useState();
+  const [darkMode, setDarkMode] = useState(false);
 
+  function handleDarkModeClick(){
+    setDarkMode((darkMode) =>!darkMode);
+  }
+
+  const theme = darkMode? "dark" : "light";
   function handleLogin(){
     if(!login){
       return <Login onLogin={onLogin}/>
     }
   }
-  const[theme, setTheme] = useState('true');
-
-  const toggleTheme = () => {
-    if (theme === 'true') {
-      setTheme('dark');
-    } else {
-      setTheme('light')
-    }
-  };
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+  
 
 
     return(
       <>
-      <div className={`App ${theme}`}>
-        <button onClick={toggleTheme}>Mode</button>
+      <div className={theme}>
+        <button onClick={handleDarkModeClick}>{darkMode ? "dark" : "Light"} Mode</button>
       
        <Navbar onChangePage={setPage} />
             <Switch>
