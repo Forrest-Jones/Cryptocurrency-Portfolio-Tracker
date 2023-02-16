@@ -41,6 +41,18 @@
       "Username": "blade",
       "Password": "bladejohnson",
       "id": 7
+    },
+    {
+      "Email": "crazedman@gmail.com",
+      "Username": "crazed",
+      "Password": "12345",
+      "id": 8
+    },
+    {
+      "Email": "",
+      "Username": "",
+      "Password": "",
+      "id": 9
     }
   ]
 }

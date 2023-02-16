@@ -2,13 +2,12 @@ import {Link} from "react-router-dom"
 import React, {useState} from 'react'
 import Login from './Login'
 import './Navbar.css'
+import { BrowserRouter as Router, Switch, Route, Redirect,} from "react-router-dom";
 
-function Navbar({theme, setTheme}) {
-    const [login, setLogin] = useState(false)
+export default function Navbar({theme, setTheme}) {
 
-    function handleLogin() {
-        setLogin(!login)
-    }
+   
+    
 
     return (
         <div className='container'>
@@ -25,14 +24,16 @@ function Navbar({theme, setTheme}) {
                     <li>
                         <Link to='/myCoins'>My Coins</Link>
                     </li>
+                    <li>
+                       
+                    </li>
                 </nav>
             </ul>
             <div className='btn-group'>
-                {!login ? <button className='btn' onClick={handleLogin}>Login</button> : <Login />}
+                
                 <button className='btn' onClick={setTheme}>{theme ? 'Dark' : 'Light'}</button>
             </div>
         </div>
     )
 }
 
-export default Navbar

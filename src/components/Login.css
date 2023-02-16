@@ -1,7 +1,13 @@
 .login-container {
-  margin-top: 3in;
+  margin-top: .01in;
+  
 }
 
+h1{
+  text-align: center;
+  padding-top: 0.2em;
+  padding-bottom: .03cm;
+}
 form {
   display: flex;
   flex-direction: column;
@@ -31,4 +37,10 @@ button {
   font-size: 1rem;
   border-radius: 4px;
   background-color: #0077cc;
+}
+.login-button{
+  float: right;
+}
+.login-button:hover {
+  box-shadow: rgb(0 0 0 / 15%) 0px 8px 24px;
 }

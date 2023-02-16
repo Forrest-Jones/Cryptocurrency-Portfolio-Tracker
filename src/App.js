@@ -3,27 +3,30 @@ import Navbar from './components/Navbar'
 import Search from "./components/Search.js"
 import MyCoins from "./components/MyCoins.js"
 import CoinContainer from './components/CoinContainer.js'
-import {Route, Switch} from "react-router-dom"
+import {Routes, Route, useNavigate, Switch, Link, Redirect} from 'react-router-dom';
 import Login from './components/Login.js' 
 import './index.css'
 
 function App() {
+
   const [coins, setCoins] = useState(null)
-  const [login, onLogin] = useState()
   const [lightTheme, setLightTheme] = useState(true)
   const [searchQuery, setSearchQuery] = useState('');
+  const [login, setLogin] = useState(false)
 
+ 
+  
   useEffect(() => {
       fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false')
       .then(r => r.json())
       .then(data => setCoins(data))
   }, [])
 
-  function handleLogin(){
-    if(!login){
-      return <Login onLogin={onLogin}/>
-    }
-  }
+  // function handleLogin(){
+  //   if(!login){
+  //     return <Login onLogin={onLogin}/>
+  //   }
+  // }
 
   function toggleTheme() {
     setLightTheme(!lightTheme)
@@ -35,7 +38,7 @@ function App() {
 
   return (
     <div className={`App ${lightTheme ? 'light' : 'dark'}`}>
-
+      <Login />
       <Navbar theme={lightTheme} setTheme={toggleTheme}/>
       <Switch>
         <Route path="/search">
@@ -44,8 +47,8 @@ function App() {
         <Route path="/myCoins">
           <MyCoins />
         </Route>
-        <Route exact path="/">
-        </Route>
+        
+        <Redirect to="/" />
       </Switch>
 
       <div className='Coins'>

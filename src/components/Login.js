@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './Login.css';
-
+import {Routes,useNavigate,  Link, } from 'react-router-dom';
 function Login({ onLogin }) {
   const API = 'http://localhost:4000/Logins';
   const [Email, setEmail] = useState('');
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
-  const [logins, setLogins] = useState([]);
+  const [login, setLogin] = useState([]);
+  const [click,setClick] = useState(false);
+  const onClick = () => setClick(!click);
+
+  function handleLogin() {
+    setLogin(!login)
+}
 
   // Perform a GET request to retrieve all logins from the JSON server
   useEffect(() => {
     fetch(API)
       .then((response) => response.json())
-      .then((data) => setLogins(data));
+      .then((data) => setLogin(data));
   }, []);
 
   function handleSubmit(event) {
@@ -38,12 +44,19 @@ function Login({ onLogin }) {
     // code to store emails in file
   })
   .catch(error => console.error(error));
+   
 
   return (
     
     <div className="login-container">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+       <button className="login-button" onClick={onClick}>Sign Up</button>
+        
+      
+    
+    {click && (   
+      
+    <form onSubmit={handleSubmit}>
+      <h1>Sign Up</h1> 
         <label>
           <p>Email</p>
           <input type="text" name="Email" placeholder="Enter your Email" value={Email} onChange={(event) => setEmail(event.target.value)} />
@@ -57,22 +70,15 @@ function Login({ onLogin }) {
           <input type="password" name="Password" placeholder="Create a password" value={Password} onChange={(event) => setPassword(event.target.value)} />
         </label>
         <div>
-          <button type="submit">Submit</button>
+          <button type="submit">Create </button>
         </div>
       </form>
-      <div>
-        <h2>All Logins</h2>
-        <ul>
-          {logins.map((login) => (
-            <li key={login.id}>
-              <span style={{ display: 'none' }}>{login.Email} - {login.Username} - {login.Password}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+        )}
+   
+        
       
     </div>
-  );
+  )
 }
 
 

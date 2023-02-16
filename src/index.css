@@ -29,6 +29,7 @@ a {
 .container {
   margin: auto;
   max-width: 1240px;
+  border-radius: 12%;
 }
 
 body {
