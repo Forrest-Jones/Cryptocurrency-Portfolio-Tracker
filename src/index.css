@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
+  --dark: #333;
+  --light: #f5f8ff;
   --primary: #518cf8;
-  --background: #f5f8ff;
+
 }
 
 .primary {
@@ -20,15 +22,14 @@ ul {
 }
 
 a {
-  text-decoration: none;
   color: rgb(69, 67, 67);
+  text-decoration: none;
 }
 
 .container {
-  max-width: 1240px;
   margin: auto;
+  max-width: 1240px;
 }
-
 
 body {
   font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen',
@@ -42,7 +43,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 
 h1 {
   font-size: 3.5rem;
@@ -64,14 +64,14 @@ p {
 }
 
 .btn {
-  padding: 14px 32px;
-  border: 1px solid var(--primary);
-  background-color: var(--primary);
   color: #fff;
-  border-radius: 24px 4px;
+  cursor: pointer;
+  margin: 3px;
+  padding: 14px 14px;
   font-size: 1.1rem;
   font-weight: 600;
-  cursor: pointer;
+  border-radius: 24px 5px;
+  background-color: var(--primary);
 }
 
 .btn:hover {
@@ -79,15 +79,26 @@ p {
 }
 
 input {
-  padding: 12px 32px;
   border: 1px solid var(--primary);
-  background: transparent;
-  border-radius: 24px 4px;
+  padding: 12px 32px;
   font-size: 1rem;
-  margin-right: .8rem;
+  background: transparent;
   font-family: 'Poppins', sans-serif;
+  margin-right: .8rem;
+  border-radius: 24px 4px;
 }
 
+.dark {
+  color: var(--light);
+  transition: all 0.4s;
+  background-color: var(--dark);
+}
+
+.light {
+  color: var(--dark);
+  transition: all 0.4s;
+  background-color: var(--light);
+}
 
 @media screen and (max-width:768px) {
   h1 {
@@ -117,14 +128,4 @@ input {
   input {
     width: 100%;
   }
-}  
-
-.dark {
-  background-color: #333;
-  color: #fff;
-  transition: all 0.5s;
-  }
-.light {
-  background-color: #fff;
-  color: #333;
-  }
+}
