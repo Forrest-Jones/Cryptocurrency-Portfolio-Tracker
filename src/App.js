@@ -14,26 +14,30 @@ export default function App() {
   const [coins, setCoins] = useState(null)
   const [login, setLogin] = useState(null)
   const [lightTheme, setLightTheme] = useState(true)
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('')
   
   useEffect(() => {
-      fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false')
-      .then(r => r.json())
-      .then(data => setCoins(data))
+      refresh()
   }, [])
 
   const toggleTheme = () => setLightTheme(!lightTheme)
 
-  const filteredCoins = () => {return coins.filter(coin =>coin.name.toLowerCase().includes(searchQuery.toLowerCase()))}
+  const filteredCoins = () => {return coins.filter(coin => coin.name.toLowerCase().includes(searchQuery.toLowerCase()) && ((location.pathname === "/myCoins" && login)? login.Coins.find(coinID => coinID === coin.id) : true))}
 
   const updateLogin = login => setLogin(login)
 
+  const refresh = () => {
+    fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false')
+    .then(r => r.json())
+    .then(data => setCoins(data))
+  }
+
   return (
     <div className={`App ${lightTheme ? 'light' : 'dark'}`}>
-      <Navbar theme={lightTheme} setTheme={toggleTheme} login={login} setLogin={updateLogin}/>
+      <Navbar theme={lightTheme} setTheme={toggleTheme} login={login} setLogin={updateLogin} refresh={refresh} query={setSearchQuery}/>
       <Routes>
         <Route path="/search" element={<Search query={setSearchQuery}/>}/>
-        <Route path="/myCoins" element={<MyCoins/>}/>
+        <Route path="/myCoins" element={<MyCoins query={setSearchQuery}/>}/>
         <Route path="/login" element={<Login setLogin={updateLogin}/>}/>
         <Route exact path="/" element={null}/>
       </Routes>

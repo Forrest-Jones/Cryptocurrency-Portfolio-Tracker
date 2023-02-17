@@ -1,66 +1,65 @@
 .my-coins-container {
-    max-width: 1240px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .card {
-    display: flex;
-    flex-direction: column;
-    padding: 12px 22px;
-    margin: 0.4rem;
-    width: 170px;
-    height: 170px;
-    border-radius: 24px;
-    border: 1px solid #d3d3d3;
-    box-shadow: rgb(0 0 0 / 12%) 0px 8px 24px;
-    text-align: center;
-  }
-  
-  .card:hover {
-    box-shadow: rgb(0 0 0 / 20%) 0px 8px 24px;
-    cursor: pointer;
-  }
-  
-  .top {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  img {
-    width: 50px;
-    margin: auto;
-    padding: 0.2rem 0;
-  }
-  
-  .icon {
-    font-size: 20px;
-    margin: auto;
-    padding-top: 6px;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .span {
-    font-size: 22px;
-  }
-  
-  .green {
-    color: #00ff00;
-  }
-  
-  .red {
-    color: #ff0000;
-  }
-  
-  ul {
-    list-style-type: none;
-  }
-  
-  li {
-    display: inline-block;
-  }
-  
+  margin: auto;
+  display: flex;
+  max-width: 1240px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card {
+  width: 170px;
+  border: 1px solid #d3d3d3;
+  height: 170px;
+  margin: 0.4rem;
+  display: flex;
+  padding: 12px 22px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 8px 24px;
+  text-align: center;
+  border-radius: 24px;
+  flex-direction: column;
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 20%) 0px 8px 24px;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  width: 50px;
+  margin: auto;
+  padding: 0.2rem 0;
+}
+
+.icon {
+  margin: auto;
+  font-size: 20px;
+  align-items: center;
+  padding-top: 6px;
+  justify-content: center;
+}
+
+.span {
+  font-size: 22px;
+}
+
+.green {
+  color: #00ff00;
+}
+
+.red {
+  color: #ff0000;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline-block;
+}

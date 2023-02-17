@@ -9,6 +9,7 @@ export default function Login({setLogin}) {
   //Click True = Sign Up, Click False = Login
   const [click, setClick] = useState(false)
   const [logins, setLogins] = useState(null)
+  const [error, setError] = useState(null)
 
   const handleClick = () => setClick(!click)
 
@@ -29,7 +30,10 @@ export default function Login({setLogin}) {
     if (click && e.target.email.value !== '' && user.Username !== '' && user.Password !== ''){
       let work = true
       logins.forEach(login => {
-        if (login.Username === user.Username) {work = false}
+        if (login.Username === user.Username) {
+          work = false
+          setError("Username Already Taken!")
+        }
       })
       if (work) {
         fetch(API, {
@@ -46,32 +50,26 @@ export default function Login({setLogin}) {
           navigate("/")
         })
       }
-    }else if (user.Username !== '' && user.Password !== ''){
+    }else if (!click && user.Username !== '' && user.Password !== ''){
       let found = false
       logins.map(login => {
         if (user.Username === login.Username){
-          found = true
+          if (user.Password !== login.Password){
+            setError("Username/Password Invalid.")
+          }else{
+            found = true
           setLogin(login)
           navigate("/")
+          }
         }
       })
       if (!found){
-        error()
+        setError("Username/Password Invalid.")
       }
+    }else{
+      setError("Please Enter Information")
     }
   }
-
-  function error(){
-    console.log("error!")
-  }
-  
-  // fetch('http://localhost:4000/Logins')
-  // .then(response => response.json())
-  // .then(data => {
-  //   const emails = data.map(login => login.Email)
-  //   // code to store emails in file
-  // })
-  // .catch(error => console.error(error))
 
   return (
     <div className="login-container">
@@ -89,11 +87,10 @@ export default function Login({setLogin}) {
           <p>Password</p>
           <input type="password" name="password" placeholder="Create a password"/>
         </label>
-        <div>
-          <button type="submit">{click ? "Sign up" : "Login"}</button>
-          <button onClick={handleClick}>{(click ? `Already` : `Don't`) + ` have an account?`}</button>
-        </div>
+        <button type="submit"> {click ? "Sign up" : "Login"}</button> 
       </form>
+      <button onClick={handleClick}>{(click ? `Already` : `Don't`) + ` have an account?`}</button>
+      {error ? <h3 className="error">{error}</h3>: null}
     </div>
   )
 }

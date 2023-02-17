@@ -128,15 +128,4 @@ input {
   input {
     width: 100%;
   }
-}  
-
-.dark  {
-  background: #333;
-  color: #fff;
-  transition: all 0.5s;
-  }
-.light  {
-  background: #fff;
-  color: #333;
-  }
-
+}

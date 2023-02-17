@@ -1,8 +1,11 @@
 .login-container {
+  display: flex;
   margin-top: .01in;
+  align-items: center;
+  flex-direction: column;
 }
 
-h1{
+h1 {
   text-align: center;
   padding-top: 0.2em;
   padding-bottom: .03cm;
@@ -10,8 +13,8 @@ h1{
 
 form {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
 }
 
 label {
@@ -38,4 +41,8 @@ button {
   font-size: 1rem;
   border-radius: 4px;
   background-color: #0077cc;
+}
+
+.error {
+  color: red;
 }

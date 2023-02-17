@@ -32,22 +32,7 @@
       "Email": "hankarron@hank.com",
       "Username": "hankarron",
       "Password": "hankarron",
-      "Coins": [
-        "ethereum",
-        "binancecoin",
-        "tether",
-        "bitcoin",
-        "bitcoin",
-        "usd-coin",
-        "ripple",
-        "ripple",
-        "cardano",
-        "solana",
-        "dai",
-        "dai",
-        "binance-usd",
-        "binance-usd"
-      ],
+      "Coins": [],
       "id": 5
     },
     {
@@ -56,6 +41,20 @@
       "Password": "bladejohnson",
       "Coins": [],
       "id": 6
+    },
+    {
+      "Email": "asd",
+      "Username": "andrewstown",
+      "Password": "asd",
+      "Coins": [
+        "usd-coin",
+        "avalanche-2",
+        "tron",
+        "litecoin",
+        "chainlink",
+        "the-open-network"
+      ],
+      "id": 7
     }
   ]
 }
