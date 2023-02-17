@@ -1,85 +1,99 @@
-import React, { useState, useEffect } from 'react';
-import './Login.css';
-import {Routes,useNavigate,  Link, } from 'react-router-dom';
-function Login({ onLogin }) {
-  const API = 'http://localhost:4000/Logins';
-  const [Email, setEmail] = useState('');
-  const [Username, setUsername] = useState('');
-  const [Password, setPassword] = useState('');
-  const [login, setLogin] = useState([]);
-  const [click,setClick] = useState(false);
-  const onClick = () => setClick(!click);
+import React, {useState, useEffect} from 'react'
+import {useNavigate} from "react-router-dom"
+import './Login.css'
 
-  function handleLogin() {
-    setLogin(!login)
-}
+export default function Login({setLogin}) {
+  const API = 'http://localhost:4000/Logins'
+  const navigate = useNavigate()
 
-  // Perform a GET request to retrieve all logins from the JSON server
+  //Click True = Sign Up, Click False = Login
+  const [click, setClick] = useState(false)
+  const [logins, setLogins] = useState(null)
+
+  const handleClick = () => setClick(!click)
+
   useEffect(() => {
     fetch(API)
-      .then((response) => response.json())
-      .then((data) => setLogin(data));
-  }, []);
+    .then(r => r.json())
+    .then(data => setLogins(data))
+  }, [])
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    fetch(API, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ Email: Email, Username: Username, Password: Password }),
-    })
-      .then((res) => res.json())
-      .then((loginData) => onLogin(loginData));
-    setEmail('');
-    setUsername('');
-    setPassword('');
+  function handleSubmit(e) {
+    e.preventDefault()
+    
+    let user = {
+      Username: e.target.username.value,
+      Password: e.target.password.value
+    }
+
+    if (click && e.target.email.value !== '' && user.Username !== '' && user.Password !== ''){
+      let work = true
+      logins.forEach(login => {
+        if (login.Username === user.Username) {work = false}
+      })
+      if (work) {
+        fetch(API, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ Email: e.target.email.value, Username: user.Username, Password: user.Password, Coins: []}),
+        })
+        .then(r => r.json())
+        .then(data => {
+          setLogins(...logins, data)
+          setLogin(data)
+          navigate("/")
+        })
+      }
+    }else if (user.Username !== '' && user.Password !== ''){
+      let found = false
+      logins.map(login => {
+        if (user.Username === login.Username){
+          found = true
+          setLogin(login)
+          navigate("/")
+        }
+      })
+      if (!found){
+        error()
+      }
+    }
   }
-  fetch('http://localhost:4000/Logins')
-  .then(response => response.json())
-  .then(data => {
-    const emails = data.map(login => login.Email);
-    console.log(emails);
-    // code to store emails in file
-  })
-  .catch(error => console.error(error));
-   
+
+  function error(){
+    console.log("error!")
+  }
+  
+  // fetch('http://localhost:4000/Logins')
+  // .then(response => response.json())
+  // .then(data => {
+  //   const emails = data.map(login => login.Email)
+  //   // code to store emails in file
+  // })
+  // .catch(error => console.error(error))
 
   return (
-    
     <div className="login-container">
-       <button className="login-button" onClick={onClick}>Sign Up</button>
-        
-      
-    
-    {click && (   
-      
-    <form onSubmit={handleSubmit}>
-      <h1>Sign Up</h1> 
-        <label>
+      <form onSubmit={handleSubmit}>
+        <h1>{click ? "Sign up" : "Login"}</h1> 
+        {click ? <label>
           <p>Email</p>
-          <input type="text" name="Email" placeholder="Enter your Email" value={Email} onChange={(event) => setEmail(event.target.value)} />
-        </label>
+          <input type="text" name="email" placeholder="Enter your Email"/>
+        </label> : null}
         <label>
           <p>Username</p>
-          <input type="text" name="Username" placeholder="Create a Username" value={Username} onChange={(event) => setUsername(event.target.value)} />
+          <input type="text" name="username" placeholder="Create a Username"/>
         </label>
         <label>
           <p>Password</p>
-          <input type="password" name="Password" placeholder="Create a password" value={Password} onChange={(event) => setPassword(event.target.value)} />
+          <input type="password" name="password" placeholder="Create a password"/>
         </label>
         <div>
-          <button type="submit">Create </button>
+          <button type="submit">{click ? "Sign up" : "Login"}</button>
+          <button onClick={handleClick}>{(click ? `Already` : `Don't`) + ` have an account?`}</button>
         </div>
       </form>
-        )}
-   
-        
-      
     </div>
   )
 }
-
-
-export default Login;

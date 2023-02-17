@@ -4,55 +4,58 @@
       "Email": "frankytheclaw@gmail.com",
       "Username": "frankytheclaw",
       "Password": "frankytheclaw",
+      "Coins": [],
       "id": 1
     },
     {
       "Email": "frankytheclaw@gmail.com",
       "Username": "frankytheclaw",
       "Password": "frankytheclaw",
+      "Coins": [],
       "id": 2
     },
     {
       "Email": "macktheknife@gmail.com",
       "Username": "macktheknife",
       "Password": "macktheknife",
+      "Coins": [],
       "id": 3
     },
     {
       "Email": "normanmailoer@gmil.com",
       "Username": "normanmailer",
       "Password": "normanmailer",
+      "Coins": [],
       "id": 4
-    },
-    {
-      "Email": "",
-      "Username": "",
-      "Password": "",
-      "id": 5
     },
     {
       "Email": "hankarron@hank.com",
       "Username": "hankarron",
       "Password": "hankarron",
-      "id": 6
+      "Coins": [
+        "ethereum",
+        "binancecoin",
+        "tether",
+        "bitcoin",
+        "bitcoin",
+        "usd-coin",
+        "ripple",
+        "ripple",
+        "cardano",
+        "solana",
+        "dai",
+        "dai",
+        "binance-usd",
+        "binance-usd"
+      ],
+      "id": 5
     },
     {
       "Email": "bladejohson@blade.com",
       "Username": "blade",
       "Password": "bladejohnson",
-      "id": 7
-    },
-    {
-      "Email": "crazedman@gmail.com",
-      "Username": "crazed",
-      "Password": "12345",
-      "id": 8
-    },
-    {
-      "Email": "",
-      "Username": "",
-      "Password": "",
-      "id": 9
+      "Coins": [],
+      "id": 6
     }
   ]
 }

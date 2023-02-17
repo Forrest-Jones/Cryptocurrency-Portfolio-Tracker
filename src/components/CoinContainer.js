@@ -2,12 +2,10 @@ import React from 'react'
 import Coin from './Coin.js'
 import './CoinContainer.css'
 
-function CoinContainer({coins}) {
+export default function CoinContainer({coins, login, updateLogin}) {
     return (
         <ul>
-            {coins?.map(coin => {return <li key={coin.id}><Coin coin={coin}/></li>})}
+            {coins?.map(coin => {return <li key={coin.id}><Coin coin={coin} login={login} updateLogin={updateLogin}/></li>})}
         </ul>
     )
 }
-
-export default CoinContainer
