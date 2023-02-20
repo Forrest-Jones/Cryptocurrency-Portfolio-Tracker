@@ -53,3 +53,5 @@ export default function Coin({coin, login, updateLogin}){
         </div>
     )
 }
+
+//GDC 2.20.23
